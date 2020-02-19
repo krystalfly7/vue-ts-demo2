@@ -86,6 +86,7 @@ export default Vue.extend({
     },
     makeMoney() {
       this.userObj.money += 1;
+      this.testkk();
     },
     spendMoney() {
       this.userObj.money -= 1;

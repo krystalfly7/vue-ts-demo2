@@ -12,5 +12,10 @@ export default {
     return {
       testValue: "testValue"
     };
+  },
+  methods: {
+    testkk() {
+      console.log('testkk funciton')
+    }
   }
 };

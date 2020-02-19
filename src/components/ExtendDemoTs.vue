@@ -13,8 +13,8 @@
     <div @click="spendMoney">花掉一元</div>
     <div @click="makeMoney">赚取一元</div>
     <div @click="keepStatus">没有开支</div>
-    <!-- <div class="other">以下说明mixin</div>
-    <div>mixin中的{{testValue}}</div> -->
+    <div class="other">以下说明mixin</div>
+    <div>mixin中的{{testValue}}</div>
   </div>
 </template>
 
@@ -22,7 +22,7 @@
 import Vue from 'vue';
 import Header from './Header.vue';
 
-// import ExampleMixin from './ExampleMixin';
+import ExampleMixin from './ExampleMixin';
 
 interface ItemInterface {
   key: string,
@@ -41,7 +41,7 @@ interface User {
 // };
 export default Vue.extend({
   name: 'ExtendDemoTs',
-  // mixins: [ExampleMixin],
+  mixins: [ExampleMixin],
   components: {
     Header
   },
@@ -53,7 +53,7 @@ export default Vue.extend({
       type: Boolean,
       required: true
     },
-    arrayD: {// 为啥父组件传递的array不是Item interface的类型没有报错呢？
+    arrayD: {
       type: Array as () => Array<ItemInterface>
     },
     objE: {
@@ -83,6 +83,9 @@ export default Vue.extend({
     userMoney() : number {
       return this.userObj.money + this.historyMoney;
     }
+    // userMoney() {
+    //   return 2
+    // }
   },
   methods: {
     keepStatus() {
@@ -90,6 +93,7 @@ export default Vue.extend({
     },
     makeMoney() : void {//如果指定返回数据就必须是正确的类型，否则报错
       this.userObj.money += 1;
+      // this.testkk();
     },
     spendMoney() : void {
       this.userObj.money -= 1;

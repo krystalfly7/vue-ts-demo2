@@ -12,14 +12,11 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit } from "vue-property-decorator";
-
 interface Person {
     name: string,
     age: number
 }
-
 @Component
-
 export default class HelloDecorator extends Vue {
     @Prop() name!: string;//!是和?相对的，表示强制解析（告诉ts编译器，这里一定有值)
     @Prop() initialEnthusiasm!: number;
@@ -33,17 +30,14 @@ export default class HelloDecorator extends Vue {
     mounted() {
         console.log('mounted')
     }
-
     @Watch('data1')
     onWatchData1(newVal: string, oldVal: string){
         console.log(newVal);
     }
-
     @Watch('userObj', { deep: true })
     onWatchPerson(newVal: Person){
         console.log(newVal);
     }
-
     increment() {
         this.enthusiasm++;
         this.data1 = 'data1 变更了'
@@ -53,11 +47,9 @@ export default class HelloDecorator extends Vue {
             this.enthusiasm--;
         }
     }
-
     get exclamationMarks(): string {
         return Array(this.enthusiasm + 1).join('!');
     }
-
     @Emit('testEmit')
     emitTodo(params: string) {
         console.log('hello');
